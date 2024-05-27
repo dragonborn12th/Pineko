@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Details</title>
+  <link rel="icon" type="image/x-icon" href="file:images\_ec4c65ef-eb75-48c7-88fc-c7f007877583.ico">
+      <link rel="icon" type="image/x-icon" href="/images/_ec4c65ef-eb75-48c7-88fc-c7f007877583.ico">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .purchase-detail th, .purchase-detail td {
+      padding: 12px;
+      text-align: center;
+    }
+
+    .contact-modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding-top: 100px;
+      text-align: center;
+    }
+
+    .contact-modal h2 {
+      color: white;
+    }
+
+    .contact-modal p {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .contact-modal button {
+      background-color: #6c757d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .contact-modal button:hover {
+      background-color: #495057;
+    }
+
+    .mini-container {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      font-size: 18px;
+    }
+
+    .back-button {
+      position: absolute;
+      bottom: 20px;
+      left: 10px;
+    }
+
+    .golden-button {
+      touch-action: manipulation;
+      display: inline-block;
+      outline: none;
+      font-family: inherit;
+      font-size: 1em;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 0.3em;
+      height: 2.75em;
+      line-height: 2.5em;
+      text-transform: uppercase;
+      padding: 0 1em;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+        inset 0 -2px 5px 1px rgba(139, 66, 8, 1),
+        inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+      background-image: linear-gradient(
+        160deg,
+        #a54e07,
+        #b47e11,
+        #fef1a2,
+        #bc881b,
+        #a54e07
+      );
+      border: 1px solid #a55d07;
+      color: rgb(120, 50, 5);
+      text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      background-size: 100% 100%;
+      background-position: center;
+    }
+
+    .golden-button:focus,
+    .golden-button:hover {
+      background-size: 150% 150%;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23),
+        inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+      border: 1px solid rgba(165, 93, 7, 0.6);
+      color: rgba(120, 50, 5, 0.8);
+    }
+
+    .golden-button:active {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+        inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+    }
+    .create-account-btn {
+      margin-top: 100px; 
+      position: relative; 
+      left: -180px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="mini-container">
+          <h5>Your Money Refunded</h5>
+          <span id="totalPaymentAmount">0</span>
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="create-account-btn-wrapper">
+  <a href="dashbaord.php" class="golden-button create-account-btn">Back to Dashboard</a>
+</div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1>Lost Product Refund</h1>
+        <form>
+          <div class="form-group">
+            <label for="productIdInput"> Enter Product ID (for refund):</label>
+            <input type="text" class="form-control" id="productIdInput" placeholder="Put Product ID if you lost the product for
+
+ refund">
+          </div>
+          <button type="button" class="btn btn-primary golden-button" onclick="addProduct()">Refund Product </button>
+        </form>
+      </div>
+    </div>
+
+    <table class="table mt-5 purchase-detail">
+      <thead>
+        <tr>
+          <th>Product Image</th>
+          <th>Product Name</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+          <th>Quantity</th>
+          <th>Payment Amount</th>
+          <th>Actions</th>
+          <th>Product ID</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

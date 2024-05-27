@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product 16</title>
+    <link rel="icon" type="image/x-icon" href="file:images\_ec4c65ef-eb75-48c7-88fc-c7f007877583.ico">
+    <link rel="icon" type="image/x-icon" href="/images/_ec4c65ef-eb75-48c7-88fc-c7f007877583.ico">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .image-container {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .image {
+            width: 100%;
+            display: block;
+        }
+
+        .details {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .buy-section {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #f8f9fa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-image: linear-gradient(160deg, #a54e07, #b47e11, #fef1a2, #bc881b, #a54e07);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #d15709;
+        }
+
+        .delivery-info {
+            font-size: 14px;
+            color: green;
+        }
+
+        /* Popup styles */
+        .popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            width: 90%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="images/biiit.png" alt="Pineapple Jam with Bread Chip" class="image">
+        </div>
+        <div class="details">
+            <p class="title"><b>PINEAPPLE Moisturing</b></p>
+            <p>Step into a world of hydration and nourishment with our Moisturizing Lotion. Enriched with a blend of skin-loving ingredients, this luxurious lotion wraps your skin in a veil of soothing moisture, leaving it feeling soft, supple, and rejuvenated. Our formula is carefully crafted with hydrating agents such as hyaluronic acid and glycerin, which work to replenish and lock in moisture, keeping your skin hydrated throughout the day. </p>
+            <h1><b>RECIPE</b></h1>
+            <ul class="recipe-list">
+                <li>1/2 cup shea butter</li>
+                <li>1/4 cup coconut oil</li>
+                <li>2 tablespoons almond oil</li>
+                <li>1 tablespoon beeswax pellets</li>
+                <li>1 teaspoon vitamin E oil</li>
+                <li>10-15 drops essential oil of your choice (such as lavender or rose)</li>
+                <li>1/4 cup distilled water or rose water</li>
+                <li>1 tablespoon vegetable glycerin</li>
+            </ul>
+            <div class="buy-section">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" required class="form-control">
+                <br>
+                <label for="age" class="form-label">Age:</label>
+                <input type="number" id="age" name="age" required class="form-control">
+                <br>
+                <label for="phoneNumber" class="form-label">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required class="form-control">
+                <br>
+                <label for="quantity" class="form-label">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" class="form-control">
+                <br>
+                <label for="address" class="form-label">Address:</label>
+                <textarea id="address" name="address" rows="4" class="form-control"></textarea>
+                <button class="buy-button" onclick="showPopup()">Buy Now</button>
+                <div class="delivery-info">FAST DELIVERY | FRESH FOOD | NO DEFECTS </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-container" id="popup">
+        <span class="close-button" onclick="hidePopup()">&times;</span>
+        <div class="popup-content">
+            <label for="paymentAmount">Enter Amount:</label>
+            <input type="number" id="paymentAmount" class="input-money form-control">
+            <label for="paymentMethod">Select payment method:</label>
+            <select id="paymentMethod" name="paymentMethod" class="form-select">
+                <option value="card">Credit/Debit Card</option>
+                <option value="gcash">GCash</option>
+                <option value="paypal">PayPal</option>
+                <option value="bank_transfer">Bank Transfer</option>
+            </select>
+            <button class="submit-button btn btn-danger" onclick="checkPayment()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        function generateRandomProductId() {
+      
+      return Math.floor(Math.random() * 9000) + 1000;
+  }
+
+  function checkPayment() {
+    var quantity = parseInt(document.getElementById("quantity").value);
+    var paymentAmount = parseInt(document.getElementById("paymentAmount").value);
+    var name = document.getElementById("name").value;
+    var age = document.getElementById("age").value;
+    var phoneNumber = document.getElementById("phoneNumber").value;
+    var address = document.getElementById("address").value;
+    var paymentMethod = document.getElementById("paymentMethod").value;
+
+    var productPrice = 1500;
+
+    if (isNaN(paymentAmount) || paymentAmount < productPrice) {
+        alert("Insufficient payment amount. Please enter at least " + productPrice + " pesos.");
+    } else if (name.trim() === '' || age.trim() === '' || phoneNumber.trim() === '' || address.trim() === '') {
+        alert("Please enter your name, age, phone number, and address.");
+    } else {
+        var productName = "Mosturizing";
+        var productImage = "images/biiit.png";
+        var productId = generateRandomProductId(); 
+        window.location.href = "purcahsezone.php?productName=" + productName + "&name=" + name + "&age=" +
+            age + "&phoneNumber=" + phoneNumber + "&quantity=" + quantity + "&paymentAmount=" + paymentAmount +
+            "&productImage=" + productImage + "&address=" + address + "&productId=" + productId;
+    }
+}
+    </script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
